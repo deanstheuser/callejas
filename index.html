@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Callejas Landscaping</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+  <style>
+    body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #1e1e1e; /* ChatGPT-like dark gray */
+  color: #f1f1f1; /* Light text for readability */
+}
+
+
+        header {
+  background: url('grass.jpg') no-repeat center center / cover;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 10px;
+      color: #f1f1f1;
+    }
+
+    header p {
+      font-size: 1.2rem;
+      color: #fff;
+    }
+
+    .cta {
+      margin-top: 20px;
+    }
+
+    .cta a {
+      display: inline-block;
+      padding: 12px 24px;
+      background-color: #f4c430;
+      color: #000;
+      font-weight: 600;
+      text-decoration: none;
+      border-radius: 6px;
+      transition: transform 0.3s ease;
+    }
+
+    .cta a:hover {
+      transform: scale(1.05);
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    .about {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+
+    .about img {
+      width: 100%;
+      max-width: 400px;
+      border-radius: 16px;
+    }
+
+    .about .text {
+      flex: 1;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 40px;
+    }
+
+   .service-card {
+  background: rgba(255, 255, 255, 0.45); /* frosted: mostly white, a little see-through */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 12px;
+  padding: 30px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+  transition: transform 0.3s ease;
+}
+
+
+
+
+    .service-card:hover {
+      transform: translateY(-8px);
+    }
+
+    .service-card h3 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      color: #2c5f2d;
+    }
+
+    .service-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: #333;
+    }
+
+    #services {
+  background: url('weedeater.jpg') no-repeat center center / cover;
+  position: relative;
+  z-index: 0;
+  padding: 60px 20px;
+  color: #fff;
+}
+
+#services::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* semi-dark overlay */
+  z-index: 0;
+}
+
+#services > * {
+  position: relative;
+  z-index: 1;
+}
+
+#services h2{
+font-size: 2.5rem;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  color: #f4c430; /* optional: highlight color */
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+    form {
+      background: #fff;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    form input,
+    form textarea {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+    }
+
+    form button {
+      background-color: #3a7d44;
+      color: white;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 6px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    form button:hover {
+      background-color: #2c5f2d;
+    }
+
+   footer {
+  text-align: center;
+  padding: 60px 20px;
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)),
+              url('grass.jpg') center/cover no-repeat;
+  color: white;
+  background-blend-mode: overlay;
+}
+
+
+    @media (max-width: 768px) {
+      .about {
+        flex-direction: column;
+      }
+    }
+
+
+    /* Mobile Floating Call Button */
+.call-us-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  padding: 14px 24px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  z-index: 999;
+  display: none;
+  animation: pulseGreen 2s infinite;
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+}
+
+.call-us-button:hover {
+  transform: scale(1.05);
+}
+
+
+
+/* Responsive visibility */
+@media (max-width: 768px) {
+  .call-us-button {
+    display: block;
+  }
+}
+
+
+@keyframes pulseGreen {
+  0% {
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(46, 204, 113, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(46, 204, 113, 0);
+  }
+}
+
+/* Desktop Sticky Call Button */
+.sticky-desktop-call {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  background: linear-gradient(135deg, #2ecc71, #27ae60);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 700;
+  text-decoration: none;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.4);
+  z-index: 1000;
+  animation: pulseGreen 2s infinite;
+  transition: transform 0.3s ease;
+  font-size: 1rem;
+  display: none;
+}
+
+/* Only show on desktop */
+@media (min-width: 769px) {
+  .sticky-desktop-call {
+    display: block;
+  }
+}
+
+.carousel {
+  cursor: grab;
+}
+
+.carousel:active {
+  cursor: grabbing;
+}
+
+
+  </style>
+</head>
+
+
+
+
+<body>
+  <!-- Desktop Sticky Call Button -->
+<a href="tel:6023262906" class="sticky-desktop-call">
+  📞 (602)-326-2906
+</a>
+<!-- Mobile Floating Call Button -->
+<a href="tel:6023262906" class="call-us-button">Call Us</a>
+
+<header data-aos="fade-down">
+  <!-- Background Video -->
+  <video autoplay muted loop playsinline 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0;">
+    <source src="cutgrass1.0.mp4" type="video/mp4" />
+    Your browser does not support the video tag.
+  </video>
+
+  <!-- Content Overlay -->
+ <div style="position: relative; z-index: 1; color: white; text-align: center; padding: 60px 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;">
+    <h1>Callejas Landscaping</h1>
+    <p>High-End Landscaping Solutions for Residential & Commercial Properties</p>
+    <!-- Desktop Phone Number -->
+
+    <div class="cta">
+      <a href="#quote">Request a Quote</a>
+    </div>
+    <p> Serving The Valley Since 2010 </p>
+  </div>
+</header>
+
+
+  <section class="about" data-aos="fade-up">
+    <img src="landscapingteam.jpg" alt="Team Photo" />
+    <div class="text">
+      <h2>About Us</h2>
+      <p>At Callejas Landscaping, we proudly serve the Valley and greater Phoenix area with high-end landscaping solutions that combine elegance, function, and long-lasting quality. With years of experience in both residential and commercial projects, our team has earned a reputation as one of the most trusted names in the region. We specialize in everything from full landscape transformations to custom hardscaping, irrigation, and ongoing maintenance — all delivered with precision and care. Every project we take on is backed by a commitment to craftsmanship, communication, and client satisfaction. We use only premium materials and proven methods to ensure your outdoor space not only looks exceptional but stands the test of time. Whether you’re upgrading your backyard or enhancing a commercial property, we treat your space like it’s our own. At Callejas Landscaping, we bring your vision to life — and raise the standard for landscaping in the Valley.</p>
+    </div>
+  </section>
+
+ <section id="services" data-aos="fade-up">
+  <h2>Our Services</h2>
+  <div class="services-grid">
+    <div class="service-card" data-aos="fade-up" data-aos-delay="50">
+      <h3>🌴 Palm Trimming & Removal</h3>
+      <p>Professional palm maintenance and removal to keep your property clean and safe.</p>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+      <h3>🌲 Tree Removal (All Sizes)</h3>
+      <p>Safe and efficient removal of trees of all sizes with expert precision.</p>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+      <h3>🌵 Saguaro Removal</h3>
+      <p>Specialized saguaro removal service following safety and legal compliance.</p>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+      <h3>🌳 Tree & Bush Pruning</h3>
+      <p>Clean, healthy shaping and trimming for trees, bushes, and hedges.</p>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="250">
+      <h3>🌱 Weed Spraying & Garden Cleanup</h3>
+      <p>Weed control and full garden cleanouts for a pristine landscape.</p>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+      <h3>💧 Drip System Install & Repair</h3>
+      <p>Installation and troubleshooting of water-efficient drip irrigation systems.</p>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="350">
+      <h3>💦 Sprinkler System Install & Repair</h3>
+      <p>Keep your lawn hydrated with reliable sprinkler installation and repairs.</p>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="400">
+      <h3>⏲ Timer Box Replacement & Setup</h3>
+      <p>Efficient installation and programming of irrigation control systems.</p>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="450">
+      <h3>✅ New Gravel Spreading</h3>
+      <p>Enhance curb appeal with clean, even gravel placement for any space.</p>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="500">
+      <h3>🚜 Dirt or Gravel Removal</h3>
+      <p>Complete haul-away services for dirt, gravel, or debris from your property.</p>
+    </div>
+    <div class="service-card" data-aos="fade-up" data-aos-delay="550">
+      <h3>🪴 Tree, Shrub & Flower Planting</h3>
+      <p>Add beauty and value to your landscape with vibrant new plants and trees.</p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="quote" data-aos="fade-up">
+    <h2>Request a Quote</h2>
+    <form action="https://formspree.io/f/mldnlgba" method="POST">   !!!///change point\\\!!!
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="text" name="address" placeholder="Your Address" required />
+       <input type="tel" name="phone" placeholder="Your Phone Number" required />
+      <input type="email" name="email" placeholder="Your Email" required />
+      <textarea name="details" rows="5" placeholder="Tell us what you need..." required></textarea>
+      <button type="submit">Submit Request</button>
+    </form>
+  </section>
+
+  <section id="reviews" data-aos="fade-up">
+  <h2>Gallery & Reviews</h2>
+  <div style="display: flex; flex-wrap: wrap; gap: 40px; align-items: flex-start;">
+    <div style="flex: 1; min-width: 300px;" data-aos="fade-right">
+      <div class="carousel" style="position: relative; overflow: hidden; border-radius: 12px; max-width: 100%;">
+     <img id="carousel-img" src="desertgarden.jpg" alt="Gallery Image"
+ style="width: 100%; height: 400px; object-fit: cover; display: block; border-radius: 12px; transition: opacity 0.6s;" />
+      </div>
+      <div style="margin-top: 10px; text-align: center;">
+        <button onclick="prevImage()">⟨</button>
+        <button onclick="nextImage()">⟩</button>
+      </div>
+    </div>
+    <div style="flex: 1; min-width: 300px;">
+      <div class="services-grid">
+        <div class="service-card" data-aos="fade-up" data-aos-delay="50">
+          <p>"Outstanding work and professionalism. Our yard has never looked better!"</p>
+          <strong>- Sarah J.</strong>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="100">
+          <p>"They completely transformed our backyard. Highly recommend Callejas Landscaping!"</p>
+          <strong>- Mike R.</strong>
+        </div>
+        <div class="service-card" data-aos="fade-up" data-aos-delay="150">
+          <p>"Reliable, friendly, and incredibly skilled. The best landscaping crew in town."</p>
+          <strong>- Elena V.</strong>
+        </div>
+      </div><div style="margin-top: 30px;">
+  <p style="font-size: 1rem; line-height: 1.7;">
+    At Callejas Landscaping, client satisfaction isn't just a goal — it's our standard. We take pride in delivering consistent, high-quality results that exceed expectations on every project. From custom designs to flawless execution, our team ensures every detail reflects our commitment to excellence. We listen closely to our clients’ needs, communicate clearly, and follow through without compromise. Our repeat business and glowing referrals speak volumes about the trust we’ve built. When you hire us, you're hiring a team that treats your property like their own.
+  </p>
+</div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const galleryImages = ['landscaping.jpg', 'uniquellc2.0.jpg', 'cactusgarden.jpg', 'desertgarden.jpg'];
+  let currentImage = 0;
+
+  function showImage(index) {
+    const img = document.getElementById('carousel-img');
+    img.style.opacity = 0;
+    setTimeout(() => {
+      img.src = galleryImages[index];
+      img.style.opacity = 1;
+    }, 300);
+  }
+
+  function prevImage() {
+    currentImage = (currentImage - 1 + galleryImages.length) % galleryImages.length;
+    showImage(currentImage);
+  }
+
+  function nextImage() {
+    currentImage = (currentImage + 1) % galleryImages.length;
+    showImage(currentImage);
+  }
+</script>
+
+<script>
+  let touchStartX = 0;
+  let touchEndX = 0;
+
+  const carousel = document.querySelector('.carousel');
+
+  carousel.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+
+  carousel.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipeGesture();
+  });
+
+  function handleSwipeGesture() {
+    const swipeDistance = touchEndX - touchStartX;
+
+    if (Math.abs(swipeDistance) > 50) { // threshold
+      if (swipeDistance > 0) {
+        prevImage(); // swipe right
+      } else {
+        nextImage(); // swipe left
+      }
+    }
+  }
+</script>
+
+<script>
+  let isDragging = false;
+  let dragStartX = 0;
+  let dragEndX = 0;
+
+  carousel.addEventListener('mousedown', (e) => {
+    isDragging = true;
+    dragStartX = e.clientX;
+  });
+
+  carousel.addEventListener('mouseup', (e) => {
+    if (!isDragging) return;
+    dragEndX = e.clientX;
+    isDragging = false;
+    handleDragGesture();
+  });
+
+  carousel.addEventListener('mouseleave', () => {
+    isDragging = false;
+  });
+
+  function handleDragGesture() {
+    const dragDistance = dragEndX - dragStartX;
+
+    if (Math.abs(dragDistance) > 50) {
+      if (dragDistance > 0) {
+        prevImage(); // dragged right
+      } else {
+        nextImage(); // dragged left
+      }
+    }
+  }
+</script>
+
+
+  <section id="map" data-aos="fade-up">
+    <h2>Our Service Area</h2>
+    <div style="width: 100%; height: 400px; margin-top: 30px;">
+      <iframe
+  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3327.105672823912!2d-111.83147228480114!3d33.415184180786816!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x872baed6e61fb50b%3A0x9d30c5f2e331ee7!2sMesa%2C%20AZ!5e0!3m2!1sen!2sus!4v1719528312050!5m2!1sen!2sus"
+  width="100%"
+  height="100%"
+  style="border:0; border-radius: 12px;"
+  allowfullscreen=""
+  loading="lazy">
+</iframe>
+
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 CALLEJAS LANDSCAPING. All rights reserved.</p>
+  </footer>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>AOS.init({ once: true, duration: 800 });</script>
+</body>
+<a href="tel:6023262906" class="call-us-button" rel="noopener">Call Us</a>
+</html>
